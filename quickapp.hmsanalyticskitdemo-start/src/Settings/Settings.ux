@@ -1,0 +1,57 @@
+<!--
+  Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <div class="label-item">
+      <label target="input1">Favorite Sport</label>
+      <input id="input1" name="sport" placeholder="Please Enter Your Favorite Sport" value="{{ sport }}" @change="updateValue" />
+    </div>
+    <div class="operation">
+      <a @click="save()">CONFIRM</a>
+    </div>
+  </div>
+</template>
+
+<style>
+  @import "./style.css";
+</style>
+
+<script>
+  import router from "@system.router";
+  module.exports = {
+    data: {
+      componentData: {},
+      sport: ""
+    },
+    onInit() {
+      this.$page.setTitleBar({
+        text: "Settings",
+        textColor: "#ffffff",
+        backgroundColor: "#007DFF",
+        backgroundOpacity: 0.5,
+        menu: true
+      });
+    },
+    save(result) {
+      router.back();
+    },
+    updateValue(e) {
+      this[e.target.attr.name] = e.text;
+    }
+  };
+</script>

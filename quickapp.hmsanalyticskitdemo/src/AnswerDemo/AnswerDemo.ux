@@ -1,0 +1,123 @@
+<!--
+  Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <block if="{{currentNumber < questions.length}}">
+      <text class="title">Question {{ currentNumber + 1 }} / {{ questions.length }}: </text>
+      <text class="content">{{ questions[currentNumber] }}</text>
+      <div class="operation">
+        <a @click="reportAnswer(true)">TRUE</a>
+        <a @click="reportAnswer(false)">FALSE</a>
+      </div>
+    </block>
+    <block else>
+      <text class="result">
+        Done, you got <span class="score">{{ totalScore }}</span> points.
+      </text>
+    </block>
+    <div class="footer">
+      <a href="/Settings">SETTINGS</a>
+      <a @click="postScore()">POST SCORE</a>
+      <a @click="goNext()">NEXT</a>
+    </div>
+  </div>
+</template>
+
+<style>
+  @import "./style.css";
+</style>
+
+<script>
+  import prompt from "@system.prompt";
+
+  module.exports = {
+    data: {
+      componentData: {},
+      currentNumber: 0,
+      answers: [true, true, false, false, true],
+      questions: ["The largest planet in the solar system is Jupiter", "The first Olympic Games were held in Athens, Greece", "The violin has 6 strings", "Flying bats belong to birds", "Sound spreads faster in the water than in the air"],
+      userAnswers: []
+    },
+    computed: {
+      totalScore() {
+        let totalScore = 0;
+        let scorePerQuestion = 100 / this.answers.length;
+        for (let index = 0; index < this.answers.length; index++) {
+          if (this.answers[index] === this.userAnswers[index]) {
+            totalScore += scorePerQuestion;
+          }
+        }
+
+        return totalScore;
+      }
+    },
+    formatDate() {
+      let date = new Date();
+      let m = date.getMonth() + 1;
+      m = m < 10 ? "0" + m : m;
+      let d = date.getDate();
+      d = d < 10 ? "0" + d : d;
+      let h = date.getHours();
+      h = h < 10 ? "0" + h : h;
+      let minute = date.getMinutes();
+      minute = minute < 10 ? "0" + minute : minute;
+      let second = date.getSeconds();
+      second = second < 10 ? "0" + second : second;
+      return `${date.getFullYear()}-${m}-${d} ${h}:${minute}:${second}`;
+    },
+    postScore() {
+      let scoreMessage = {};
+      scoreMessage[this.$app.$agconnect.analytics.ParamName.SCORE] = this.totalScore;
+      this.$app.$hiAnalytics.onEvent(this.$app.$agconnect.analytics.EventName.SUBMITSCORE, scoreMessage);
+      prompt.showToast({
+        message: `Post score successfully.`,
+        duration: 2000,
+        gravity: "center"
+      });
+    },
+    goNext() {
+      this.currentNumber++;
+    },
+    reportAnswer(answer) {
+      let answerTime = this.formatDate();
+      let reportMessage = {
+        question: this.questions[this.currentNumber],
+        answer: answer,
+        answerTime: answerTime
+      };
+      this.$app.$hiAnalytics.onEvent("Answer", reportMessage);
+      this.userAnswers[this.currentNumber] = answer;
+      this.goNext();
+    },
+    onInit() {
+      this.$page.setTitleBar({
+        text: "Answer the Questions",
+        textColor: "#ffffff",
+        backgroundColor: "#007DFF",
+        backgroundOpacity: 0.5,
+        menu: true
+      });
+    },
+    onHide() {
+      this.$app.$hiAnalytics.pageEnd("/Result");
+    },
+    onShow() {
+      this.$app.$hiAnalytics.pageStart("/Result");
+    }
+  };
+</script>

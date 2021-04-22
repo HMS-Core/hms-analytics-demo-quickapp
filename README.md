@@ -5,7 +5,7 @@
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Environment requirements](#Environment-requirements)
+* [Environment requirements](#environment-requirements)
 * [Sample Code](#sample-code)
 * [License](#license)
 
@@ -48,13 +48,13 @@ Software requirements:
 
 After running the app you should see a screen like this:
 
-![screen_0](screenshot/screen_0.png)
+<img src="https://github.com/HMS-Core/hms-analytics-demo-quickapp/blob/main/screenshot/screen_0.PNG" width=220>
 
 Click the button TRUE or FALSE to answer the question; Click the NEXT, show the next question; Click POST SCORE, log the score user got. All the infomations will be upload to Hianalytics, and you can see these infomations in real time using Real-time.
 
 Click button SETTINGS:
 
-![screen_1](screenshot/screen_1.png)
+<img src="https://github.com/HMS-Core/hms-analytics-demo-quickapp/blob/main/screenshot/screen_1.PNG" width=220>
 
 You will be asked what your favorite sport is. This choice will be logged to Hianalytics as a User Property.
 

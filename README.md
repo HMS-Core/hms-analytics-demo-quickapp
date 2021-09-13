@@ -1,5 +1,7 @@
 # HMS AnalyticsKit Demo for QuickApp
 
+English | [中文](README_ZH.md)
+
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -12,7 +14,7 @@
 ## Introduction
 
 HmsAnalyticsKitDemo is a QuickApp client that applying HUAWEI Hianalytics SDK used for showing how to collect user engagement and user preference.
-[Read more about Hianalytics](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/introduction-0000001050745149).
+[Read more about Hianalytics](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050745149 ).
 
 ## Installation
 
@@ -48,15 +50,26 @@ Software requirements:
 
 After running the app you should see a screen like this:
 
-<img src="https://github.com/HMS-Core/hms-analytics-demo-quickapp/blob/main/screenshot/screen_0.PNG" width=220>
+<img src="screenshot/screen_0.PNG" width=220>
 
 Click the button TRUE or FALSE to answer the question; Click the NEXT, show the next question; Click POST SCORE, log the score user got. All the infomations will be upload to Hianalytics, and you can see these infomations in real time using Real-time.
 
 Click button SETTINGS:
 
-<img src="https://github.com/HMS-Core/hms-analytics-demo-quickapp/blob/main/screenshot/screen_1.PNG" width=220>
+<img src="screenshot/screen_1.PNG" width=220>
 
 You will be asked what your favorite sport is. This choice will be logged to Hianalytics as a User Property.
+
+## Question or issues
+If you want to evaluate more about HMS Core,
+[HMSCore on Reddit](https://www.reddit.com/r/HuaweiDevelopers/) is for you to keep up with latest news about HMS Core, and to exchange insights with other developers.
+
+If you have questions about how to use HMS samples, try the following options:
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services?tab=Votes) is the best place for any programming questions. Be sure to tag your question with 
+`huawei-mobile-services`.
+- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+
+If you run into a bug in our samples, please submit an [issue](https://github.com/HMS-Core/hms-ananlytics-demo-quickapp/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/HMS-Core/hms-ananlytics-demo-quickapp/pulls) with a fix.
 
 ## License
 

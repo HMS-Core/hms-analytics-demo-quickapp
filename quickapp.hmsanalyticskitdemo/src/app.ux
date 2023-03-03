@@ -15,8 +15,8 @@
 -->
 
 <script>
-  import agconnect from "@agconnect/api";
-  import "@agconnect/instance";
+  import agconnect from "@hw-agconnect/api";
+  import "@hw-agconnect/instance";
   import "@hw-hmscore/analytics-sdk-quickapp";
 
   var agConnectConfig = {};

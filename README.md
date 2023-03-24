@@ -25,7 +25,7 @@ HmsAnalyticsKitDemo is a QuickApp client that applying HUAWEI Hianalytics SDK us
 3. Run the following command to install the AnalyticsKit SDK for QuickApp:
   
    ```bash
-   npm install --save @hmscore/analytics-sdk-quickapp
+   npm install --save @hw-hmscore/analytics-sdk-quickapp
    ```
 
 ## Configuration

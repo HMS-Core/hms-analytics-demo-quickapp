@@ -25,7 +25,7 @@ HmsAnalyticsKitDemo提供了QuickApp应用集成华为Hianalytics SDK的示例�
 3. 执行下面的命令，为QuickApp工程安装华为分析SDK：
   
    ```bash
-   npm install --save @hmscore/analytics-sdk-quickapp
+   npm install --save @hw-hmscore/analytics-sdk-quickapp
    ```
 
 ## 配置
